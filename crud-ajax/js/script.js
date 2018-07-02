@@ -79,7 +79,7 @@ function updateMhsForm(id){
                 $("#edit_nama_mhs").val(mhs["nama_mhs"]);
                 $("#edit_tempat_lahir").val(mhs["tempat_lahir_mhs"]);
                 $("#edit_tgl_lahir").val(mhs["tgl_lahir_mhs"]);
-                $("#edit_alamat").val(mhs["tgl_lahir_mhs"]);
+                $("#edit_alamat").val(mhs["alamat_mhs"]);
                 $("#edit_wali").val(mhs["wali_mhs"]);
                 $("#edit_spp").val(mhs["spp_mhs"]);
 
