@@ -31,10 +31,109 @@ include 'dbConnection.php';
     </header>
     <main class="container" role="main">
         <div class="starter-template">
-            <a class="btn btn-success" href="tambahMhsForm.php">Tambah</a>
+            <button class="btn btn-success" data-toggle="modal" data-target="#tambahMhsForm">Tambah</button>
             <div id="dataMhs"></div>
         </div>
     </main>
+
+    <!-- Add Form MHS Modal -->
+    <div class="modal fade" id="tambahMhsForm" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Tambah Mahasiswa</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="nrp">NIM:</label>
+              <input type="text" class="form-control" name="nim" id="nim" />
+            </div>
+            <div class="form-group">
+              <label for="nama_mhs">Nama Mahasiswa:</label>
+              <input type="text" class="form-control" name="nama_mhs" id="nama_mhs"/>
+            </div>
+            <div class="form-group">
+              <label for="tempat_lahir">Tempat Lahir:</label>
+              <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"/>
+            </div>
+            <div class="form-group">
+              <label for="tgl_lahir">Tanggal Lahir:</label>
+              <input type="text" class="form-control" name="tgl_lahir" id="tgl_lahir"/>
+            </div>
+            <div class="form-group">
+              <label for="alamat">Alamat:</label>
+              <input type="text" class="form-control" name="alamat" id="alamat"/>
+            </div>
+            <div class="form-group">
+              <label for="dosen_wali">Wali:</label>
+              <input type="text" class="form-control" name="wali" id="wali"/>
+            </div>
+            <div class="form-group">
+              <label for=spp>SPP:</label>
+              <input type="text" class="form-control" name="spp" id="spp"/>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-success" onclick="tambahMhs()">Tambah</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Form Mhs Modal -->
+    <div class="modal fade" id="updateMhsForm" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Update Data Mahasiswa</h4>
+          </div>
+          <div class="modal-body">
+          <!--
+            data id_mhs akan kita simpan dalam hidden input 
+            karena kita tetap membuhkan data id_mhs untuk query UPDATE
+            namun user tidak perlu mengetahui informasi tentang id_mhs
+          -->
+          <input type="hidden" name="id_mhs" id="edit_id_mhs">
+            <div class="form-group">
+              <label for="nrp">NIM:</label>
+              <input type="text" class="form-control" name="nim" id="edit_nim" />
+            </div>
+            <div class="form-group">
+              <label for="nama_mhs">Nama Mahasiswa:</label>
+              <input type="text" class="form-control" name="nama_mhs" id="edit_nama_mhs" />
+            </div>
+            <div class="form-group">
+              <label for="tempat_lahir">Tempat Lahir:</label>
+              <input type="text" class="form-control" name="tempat_lahir" id="edit_tempat_lahir" />
+            </div>
+            <div class="form-group">
+              <label for="tgl_lahir">Tanggal Lahir:</label>
+              <input type="text" class="form-control" name="tgl_lahir" id="edit_tgl_lahir" />
+            </div>
+            <div class="form-group">
+              <label for="alamat">Alamat:</label>
+              <input type="text" class="form-control" name="alamat" id="edit_alamat" />
+            </div>
+            <div class="form-group">
+              <label for="dosen_wali">Wali:</label>
+              <input type="text" class="form-control" name="wali" id="edit_wali" />
+            </div>
+            <div class="form-group">
+              <label for=spp>SPP:</label>
+              <input type="text" class="form-control" name="spp" id="edit_spp"/>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-success" onclick="updateMhs()">Update</button>
+            <input type="hidden" id="user_id" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <script src="js/script.js"></script>
   </body>
 </html>

@@ -18,4 +18,6 @@ if(mysqli_query($con,$query)) {
 } else {
     echo "Gagal";
 }
+
+mysqli_close($con);
 ?>

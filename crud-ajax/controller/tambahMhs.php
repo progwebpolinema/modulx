@@ -10,11 +10,22 @@ $alamat = $_POST["alamat_mhs"];
 $wali = $_POST["wali_mhs"];
 $spp = $_POST["spp_mhs"];
 
-$query = "INSERT INTO " .DB_TABLE_MHS. " (nim_mhs, nama_mhs, tempat_lahir_mhs, tgl_lahir_mhs, alamat_mhs, wali_mhs, spp_mhs) VALUES ('$nim', '$nama', '$tmp_lahir', '$tgl_lahir', '$alamat', '$wali', '$spp')";
+$queryCheck = "SELECT * FROM " .DB_TABLE_MHS. "WHERE id_mhs=$nim";
+$resultCheck = mysqli_query($con, $queryCheck);
 
-if(mysqli_query($con,$query)) {
-    header("location: ../index.php");
+$queryInsert = "INSERT INTO " .DB_TABLE_MHS. " (nim_mhs, nama_mhs, tempat_lahir_mhs, tgl_lahir_mhs, alamat_mhs, wali_mhs, spp_mhs) VALUES ('$nim', '$nama', '$tmp_lahir', '$tgl_lahir', '$alamat', '$wali', '$spp')";
+
+// Check apakah data sudah ada tau belum berdasarkan NIM
+// Nilai return echo akan dibaca oleh fungsi tambahMhs() pada js/script.gs
+if(mysqli_num_rows($resultCheck) > 0){
+    // return 0 jika sudah ada
+    echo 0;
 } else {
-    echo "Gagal";
+    // Lakukan insert ke database dan return 1
+    mysqli_query($con, $queryInsert);
+    echo 1;
 }
+
+mysqli_close($con);
+
 ?>

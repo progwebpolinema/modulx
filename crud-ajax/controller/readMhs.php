@@ -1,13 +1,11 @@
 <?php
 include '../dbConnection.php';
 
-$status = 1;
-
+// Kerangka awal table yang akan ditampilkan. Kita buat header terlabih dahulu
 $data = '
 <table class="table mt-2" id="records">
   <thead>
     <tr>
-      <th>No.</th>
       <th>NIM</th>
       <th>Nama</th>
       <th>Tempat Lahir</th>
@@ -25,6 +23,7 @@ $result = mysqli_query($con, $query);
 
 if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
+        // Isian table berisi data dari database. Kita masukkan langsung kedalam baris <tr> dan kolom <td>
         $data .= '<tbody><tr>
         <td>'. $row["nim_mhs"] . '</td>
         <td>' . $row["nama_mhs"] . '</td>
@@ -34,8 +33,8 @@ if(mysqli_num_rows($result) > 0){
         <td>' . $row["wali_mhs"] . '</td>
         <td>' . $row["spp_mhs"] . '</td>
         <td>
-            <button class="btn btn-warning mr-2">Update</button>
-            <button class="btn btn-danger" >Hapus</button>
+            <button class="btn btn-warning mr-2" onclick=updateMhsForm('.$row["id_mhs"].')>Update</button>
+            <button class="btn btn-danger" onclick=deleteMhs('.$row["id_mhs"].')>Hapus</button>
         </td>
         </tr></tbody>';
     }
@@ -45,4 +44,5 @@ if(mysqli_num_rows($result) > 0){
   
 $data .= '</table>';
 echo $data;
+mysqli_close($con);
 ?>

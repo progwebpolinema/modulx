@@ -2,13 +2,9 @@
 include '../dbConnection.php';
 
 // Dapatkan id dari index.php
-$id = $_GET["id"];
+$id = $_POST["id_mhs"];
 
 $query = "DELETE FROM " . DB_TABLE_MHS . " WHERE id_mhs=$id";
-
-if(mysqli_query($con,$query)) {
-    header("location: ../index.php");
-} else {
-    echo "Gagal";
-}
+mysqli_query($con,$query);
+mysqli_close($con);
 ?>
