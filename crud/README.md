@@ -1,0 +1,3 @@
+## For Your Information
+
+Modul ini merupakan modul supplement yang dapat digunakan sebagai tambahan materi belajar. Modul CRUD ini merupakan contoh kode lengkap dari penerapan CRUD dalam PHP sehingga dapat dijadikan pembanding jika Anda masih belum memahami step by step penjelasan di modul praktikum. Setiap file dalam modul ini akan dilengkapi komentar penjelesan pada setiap baris kode yang dirasa perlu untuk dijelaskan.
